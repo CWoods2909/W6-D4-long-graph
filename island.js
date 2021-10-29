@@ -1,5 +1,6 @@
 function getNeighbors(row, col, graph) {
   let neighbors = []
+ 
   // Check top
   if(row - 1 >= 0){                             // row <>
     if(graph[row - 1][col] === 1){              // column ^
@@ -26,7 +27,7 @@ if(col + 1 < graph[row].length){
     neighbors.push([row, col + 1])
   }
 }
-  // Return neighbors
+  
 return neighbors
 
 }
@@ -41,7 +42,7 @@ function islandSize(row, col, graph) {
 
   // Put the stringified starting node in visited
   visited.add( `${row},${col}` );
-  // console.log(visited);
+  
 
   // Initialize size to 0
   let size = 0;
@@ -49,10 +50,10 @@ function islandSize(row, col, graph) {
   while (stack.length > 0) {
     // Pop the first node
     let coord = stack.pop();
-    console.log(coord);
+    
     let newRow = coord[0];
     let newCol = coord[1];
-    console.log(graph[newRow][newCol]);
+   
 
     // DO THE THING (increment size by 1)
     // Then push all the UNVISITED neighbors on top of the stack
@@ -60,7 +61,7 @@ function islandSize(row, col, graph) {
     let neighbors = getNeighbors(newRow, newCol, graph);
 
     neighbors.forEach(neighbor => {
-      console.log(neighbor);
+      
       let newRow = neighbor[0];
       let newCol = neighbor[1];
       let rowCol = `${newRow},${newCol}`
@@ -72,16 +73,16 @@ function islandSize(row, col, graph) {
     });
 
   }
+  return size;
 
+}
 
     // and mark them as visited
     // HINT: This is what your helper function `getNeighbors` is for
     // HINT: Remember, you're storing your visited nodes as strings!
 
-  // return size
-  return size;
+  
 
-  // Your code here
-}
+  
 
 module.exports = [getNeighbors, islandSize];
